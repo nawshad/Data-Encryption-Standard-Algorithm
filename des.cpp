@@ -456,17 +456,17 @@ string des_process(string message,string key,bool encrypt){
 
     	round--;
     	i++;	    	    
-}
+     }
 
-	string reversed_msg=Ro+Lo;
-	cout<<"\nReversed message:\n"<<reversed_msg<<endl;
+     string reversed_msg=Ro+Lo;
+     cout<<"\nReversed message:\n"<<reversed_msg<<endl;
 
-	string des_encrypted_msg=inverse_ip_msg(reversed_msg,inv_ip);
-	cout<<"DES Encrypted Binary Message:\n"<<des_encrypted_msg<<endl;
+     string des_encrypted_msg=inverse_ip_msg(reversed_msg,inv_ip);
+     cout<<"DES Encrypted Binary Message:\n"<<des_encrypted_msg<<endl;
 
-	string hex_encrypted_msg=hex_conversion(des_encrypted_msg,conv_table,hex);
-	
-	return hex_encrypted_msg;
+     string hex_encrypted_msg=hex_conversion(des_encrypted_msg,conv_table,hex);
+
+     return hex_encrypted_msg;
 	
 }
 
@@ -537,56 +537,56 @@ int main(){
 		 	 if(tolower(endc)=='e')encrypt=true;
 		 	 else encrypt=false;
 	  		 
-	         if(message!="quit" && key!="quit"){
-			 	if(encrypt){	
-			 	 	string encrypted_msg=des_process(message,key,encrypt);
-			 	 	cout<<"\nFinally!!DES Encrypted Hex Message:"<<encrypted_msg<<endl;
-			 	 	cout<<"Do you want to see its decryption(y/n):";
-			 	 	char input;
-			 	 	cin>>input;
-			 	 	if(tolower(input)=='y'){
-		 	 			string decrypted_msg=des_process(encrypted_msg,key,false);
-			 	 		cout<<"Finally!!DES Decrypted Hex Message:"<<decrypted_msg;
-			 	 	}
-			  	}
-		 	  	else{	 	
-	  	 			string decrypted_msg=des_process(message,key,encrypt);
-		  	 		cout<<"\nFinally!!DES Decrypted Hex Message:"<<decrypted_msg<<endl;  	 	
-		  	 	}
- 	   		 }
-   			 else if(message=="quit"){
-	 	   	   	cout<<"Now program will run on hard coded hex message:0123456789ABCDEF"<<endl;
-			   	Sleep(1000);
-				string message="0123456789ABCDEF";	
-				string encrypted_msg=des_process(message,key,encrypt);
-			    cout<<"Finally!!Hex Encrypted Message:"<<encrypted_msg<<endl;
-			
-				char ch;
-				cout<<"Want to see decryption?(y/n):";
-				cin>>ch;
-				if(tolower(ch)=='y'){
-					cout<<"Decrytion Starts:"<<endl;
-					string decrypted_msg=des_process(encrypted_msg,key,false);
-					cout<<"Finally!!DES Decrypted Hex Message:"<<decrypted_msg;
-				}	
-   			}
-	 	   	else if(key=="quit"){
- 	   			cout<<"Now program will run on hard coded hex key:133457799BBCDFF1"<<endl;
-				Sleep(1000);
-				string key="133457799BBCDFF1";	
-				string encrypted_msg=des_process(message,key,encrypt);
-			    cout<<"Finally!!DES Encrypted Hex Message:"<<encrypted_msg<<endl;
+		 	if(message!="quit" && key!="quit"){
+		 		if(encrypt){	
+		 	 		string encrypted_msg=des_process(message,key,encrypt);
+		 	 		cout<<"\nFinally!!DES Encrypted Hex Message:"<<encrypted_msg<<endl;
+		 	 		cout<<"Do you want to see its decryption(y/n):";
+		 	 		char input;
+		 	 		cin>>input;
+		 	 		if(tolower(input)=='y'){
+	 	 				string decrypted_msg=des_process(encrypted_msg,key,false);
+		 	 			cout<<"Finally!!DES Decrypted Hex Message:"<<decrypted_msg;
+		 	 	}
+		  	}
+	 	  	else{	 	
+	   			string decrypted_msg=des_process(message,key,encrypt);
+	  	 		cout<<"\nFinally!!DES Decrypted Hex Message:"<<decrypted_msg<<endl;  	 	
+	  	 	}
+	 	  }
+	   	  else if(message=="quit"){
+	    	   	cout<<"Now program will run on hard coded hex message:0123456789ABCDEF"<<endl;
+		   	Sleep(1000);
+			string message="0123456789ABCDEF";	
+			string encrypted_msg=des_process(message,key,encrypt);
+		    	cout<<"Finally!!Hex Encrypted Message:"<<encrypted_msg<<endl;
 		
-				char ch;
-				cout<<"Want to see decryption?(y/n):";
-				cin>>ch;
-				if(tolower(ch)=='y'){
-					cout<<"Decrytion Starts:"<<endl;
-					string decrypted_msg=des_process(encrypted_msg,key,false);
-					cout<<"Finally!!DES Decrypted Hex Message:"<<decrypted_msg;
-				}
-			}	   	
-  	 	}
+			char ch;
+			cout<<"Want to see decryption?(y/n):";
+			cin>>ch;
+			if(tolower(ch)=='y'){
+				cout<<"Decrytion Starts:"<<endl;
+				string decrypted_msg=des_process(encrypted_msg,key,false);
+				cout<<"Finally!!DES Decrypted Hex Message:"<<decrypted_msg;
+			}	
+	   	  }
+	    	  else if(key=="quit"){
+	    		cout<<"Now program will run on hard coded hex key:133457799BBCDFF1"<<endl;
+			Sleep(1000);
+			string key="133457799BBCDFF1";	
+			string encrypted_msg=des_process(message,key,encrypt);
+		        cout<<"Finally!!DES Encrypted Hex Message:"<<encrypted_msg<<endl;
+	
+			char ch;
+			cout<<"Want to see decryption?(y/n):";
+			cin>>ch;
+			if(tolower(ch)=='y'){
+				cout<<"Decrytion Starts:"<<endl;
+				string decrypted_msg=des_process(encrypted_msg,key,false);
+				cout<<"Finally!!DES Decrypted Hex Message:"<<decrypted_msg;
+			}
+		   }	   	
+	       }
 	}
 	else{		
 	 	string ascii_table[26]={			   	
