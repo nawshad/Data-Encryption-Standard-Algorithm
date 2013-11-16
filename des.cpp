@@ -61,12 +61,11 @@ string fifty_six_bit_key(string key,int pc1[8][7]){
 	string fs_bin_key;
 	
 	for(k=0;k<56;k++)fs_bin_key=fs_bin_key+'0';
-	 
 	for(i=0;i<8;i++){
 		for(j=0;j<7;j++){
-		  index=pc1[i][j]-1;
-		  fs_bin_key[bin_key_index]=key[index];
-		  bin_key_index++;		
+			index=pc1[i][j]-1;
+			fs_bin_key[bin_key_index]=key[index];
+			bin_key_index++;		
 		}
 	}
 	return fs_bin_key;
@@ -94,12 +93,11 @@ string fourty_eight_bit_key(string C,string D,int pc2[6][8]){
 	int fe_bin_key_index=0,concat_key_index=0,i,j,k;
 	string fe_bin_key,concat_keys=C+D;
 	for(i=0;i<48;i++)fe_bin_key=fe_bin_key+'0';
-	
 	for(i=0;i<6;i++){
 		for(j=0;j<8;j++){
-		  concat_key_index=pc2[i][j]-1;
-		  fe_bin_key[fe_bin_key_index]=concat_keys[concat_key_index];
-		  fe_bin_key_index++;		
+			concat_key_index=pc2[i][j]-1;
+		  	fe_bin_key[fe_bin_key_index]=concat_keys[concat_key_index];
+		  	fe_bin_key_index++;		
 		}
 	}	
 	return fe_bin_key;
@@ -111,9 +109,9 @@ string initial_permuted_msg(string msg,int ip[8][8]){
 	for(i=0;i<64;i++)ip_msg=ip_msg+'0';	
 	for(i=0;i<8;i++){
 		for(j=0;j<8;j++){
-		  msg_index=ip[i][j]-1;
-		  ip_msg[ip_msg_index]=msg[msg_index];
-		  ip_msg_index++;		
+			msg_index=ip[i][j]-1;
+		  	ip_msg[ip_msg_index]=msg[msg_index];
+		  	ip_msg_index++;		
 		}
 	}
 	return ip_msg;
@@ -125,9 +123,9 @@ string expanded_msg(string R,int ep[8][6]){
 	for(i=0;i<48;i++)ep_msg=ep_msg+'0';
 	for(i=0;i<8;i++){
 		for(j=0;j<6;j++){
-		  R_index=ep[i][j]-1;
-		  ep_msg[ep_msg_index]=R[R_index];
-		  ep_msg_index++;		
+			R_index=ep[i][j]-1;
+			ep_msg[ep_msg_index]=R[R_index];
+			ep_msg_index++;		
 		}
 	}
 	return ep_msg;	
@@ -162,9 +160,9 @@ string permuted_message(string thirty_two_bit_msg,int pf[4][8]){
 	for(i=0;i<thirty_two_bit_msg.length();i++)permuted_msg=permuted_msg+'0';
 	for(i=0;i<4;i++){
 		for(j=0;j<8;j++){
-     	  thirty_two_bit_msg_index=pf[i][j]-1;
-		  permuted_msg[index]=thirty_two_bit_msg[thirty_two_bit_msg_index];
-		  index++;	
+     	  		thirty_two_bit_msg_index=pf[i][j]-1;
+		  	permuted_msg[index]=thirty_two_bit_msg[thirty_two_bit_msg_index];
+		  	index++;	
 		}
 	}
 	return permuted_msg;
@@ -176,9 +174,9 @@ string inverse_ip_msg(string reversed_msg,int inv_ip[8][8]){
 	for(i=0;i<64;i++)inv_msg=inv_msg+'0';
 	for(i=0;i<8;i++){
 		for(j=0;j<8;j++){
-		  index=inv_ip[i][j]-1;
-		  inv_msg[inv_msg_index]=reversed_msg[index];
-		  inv_msg_index++;	
+			index=inv_ip[i][j]-1;
+		  	inv_msg[inv_msg_index]=reversed_msg[index];
+		  	inv_msg_index++;	
 		}
 	}
 	return inv_msg;
@@ -366,109 +364,108 @@ string des_process(string message,string key,bool encrypt){
   int rotating_schedule[16]={1,1,2,2,2,2,2,2,1,2,2,2,2,2,2,1};
     /*necessary tables initialization ends*/
     /*hexadecimal msg and key input and conversion to binary starts*/
-	string bin_key,input; 
-  	cout<<"Input hex message:";
-  	for(int i=0;i<16;i++){
- 	 	cout<<message[i];
-  	} 
-  	for(int i=0;i<16;i++){
-	 	int a=message[i]-'0';
-	 	input=input+conv_table[a];
-  	}
-  	cout<<endl;
-  	cout<<"Output Binary Message:\n"<<input<<endl;
-    
-  	for(int i=0;i<16;i++){
-		int a=key[i]-'0';
-		bin_key=bin_key+conv_table[a];
-  	}
-  	cout<<"Output Binary key:\n"<<bin_key<<endl;
-  	/*hexadecimal msg and key input and conversion to binary ends*/
+  string bin_key,input; 
+  cout<<"Input hex message:";
+  for(int i=0;i<16;i++){
+  	cout<<message[i];
+  } 
+  for(int i=0;i<16;i++){
+ 	int a=message[i]-'0';
+ 	input=input+conv_table[a];
+  }
+  cout<<endl;
+  cout<<"Output Binary Message:\n"<<input<<endl;
+
+  for(int i=0;i<16;i++){
+	int a=key[i]-'0';
+	bin_key=bin_key+conv_table[a];
+  }
+  cout<<"Output Binary key:\n"<<bin_key<<endl;
+  /*hexadecimal msg and key input and conversion to binary ends*/
 	
-   	
-	/*Key processing starts*/
+   	/*Key processing starts*/
 
-	string fs_key=fifty_six_bit_key(bin_key,pc1);
-	cout<<"Fifty Six Bit Key:\n"<<fs_key<<endl;
+  string fs_key=fifty_six_bit_key(bin_key,pc1);
+  cout<<"Fifty Six Bit Key:\n"<<fs_key<<endl;
 
-	string ip_msg=initial_permuted_msg(input,ip);
-	cout<<"IP message:\n"<<ip_msg<<endl;
+  string ip_msg=initial_permuted_msg(input,ip);
+  cout<<"IP message:\n"<<ip_msg<<endl;
 
-	string Lo=ip_msg.substr(0,32);
-	cout<<"\nL["<<0<<"]:"<<Lo<<endl;
+  string Lo=ip_msg.substr(0,32);
+  cout<<"\nL["<<0<<"]:"<<Lo<<endl;
 
-	string Ro=ip_msg.substr(32,64);
-	cout<<"R["<<0<<"]:"<<Ro<<endl;
-  
-	string Co=fs_key.substr(0,28);
-	//cout<<"\nC["<<0<<"]:"<<Co<<endl;/*If you want to see the left half of the key*/
+  string Ro=ip_msg.substr(32,64);
+  cout<<"R["<<0<<"]:"<<Ro<<endl;
 
-	string Do=fs_key.substr(28,56);
-	//cout<<"D["<<0<<"]:"<<Do<<endl;/*If you want to see the right half of the key*/
+  string Co=fs_key.substr(0,28);
+  //cout<<"\nC["<<0<<"]:"<<Co<<endl;/*If you want to see the left half of the key*/
 
-	int round=16;
-	string key_holder[round],fe_key;
-	for(int i=0;i<round;i++){
-	   int iteration=i;
-	   string C1=rol_keys(Co,rotating_schedule,iteration%round);
-	   string D1=rol_keys(Do,rotating_schedule,iteration%round);   
-	   
-	   fe_key=fourty_eight_bit_key(C1,D1,pc2);
-	   key_holder[i]=fe_key;
-		      		
-       	   Co=C1;
-	   Do=D1;		   /*key processing ends*/
-	}
+  string Do=fs_key.substr(28,56);
+  //cout<<"D["<<0<<"]:"<<Do<<endl;/*If you want to see the right half of the key*/
+
+  int round=16;
+  string key_holder[round],fe_key;
+  for(int i=0;i<round;i++){
+  	int iteration=i;
+  	string C1=rol_keys(Co,rotating_schedule,iteration%round);
+   	string D1=rol_keys(Do,rotating_schedule,iteration%round);   
+   
+   	fe_key=fourty_eight_bit_key(C1,D1,pc2);
+   	key_holder[i]=fe_key;
+	      		
+        Co=C1;
+   	Do=D1;		   /*key processing ends*/
+   }
+
+   int i=0;      
+   while(round>0){
+   	cout<<"\nRound:"<<i+1<<endl;
+    	Sleep(500);
 	
-	int i=0;      
-	while(round>0){
-	    cout<<"\nRound:"<<i+1<<endl;
-	    Sleep(500);
-		
-	    string ep_msg=expanded_msg(Ro,ep);
-	    cout<<"Expanded msg(ER["<<i<<"]):\n"<<ep_msg<<endl;  
-		
-	    if(encrypt==false){
-            fe_key="";
-	    	for(int j=0;j<48;j++)fe_key=fe_key+key_holder[round-1][j];
-	    	cout<<"\nkey["<<round<<"]:\n"<<fe_key<<endl;
-  	    }
-  	    else{
-  	    	fe_key="";
+    	string ep_msg=expanded_msg(Ro,ep);
+    	cout<<"Expanded msg(ER["<<i<<"]):\n"<<ep_msg<<endl;  
+	
+    	if(encrypt==false){
+    		fe_key="";
+    		for(int j=0;j<48;j++)fe_key=fe_key+key_holder[round-1][j];
+    		cout<<"\nkey["<<round<<"]:\n"<<fe_key<<endl;
+      	}
+      	else{
+      		fe_key="";
 		for(int j=0;j<48;j++)fe_key=fe_key+key_holder[i][j];
-		    cout<<"\nkey["<<i+1<<"]:\n"<<fe_key<<endl;
-            }
-  	    
-	    string xored_message=xored_msg(ep_msg,fe_key);
-	    cout<<"Xored Message(E(R["<<i<<"]+K["<<i+1<<"]):\n"<<xored_message<<endl;
-	    
-	    string substituted_msg=substitution_function(xored_message,sbox);
-	    cout<<"Substituted Message(S-Box outputs):\n"<<substituted_msg<<endl;
-	    
-	    string permuted_msg=permuted_message(substituted_msg,pf);
-	    cout<<"Permuted message(f(R["<<i<<"],K["<<i+1<<"])):\n"<<permuted_msg<<endl;
-	    
-	    string L1=Ro;
-	    cout<<"L["<<i+1<<"]:"<<L1<<endl;
-		
-	    string R1=xored_msg(Lo,permuted_msg);
-	    cout<<"R["<<i+1<<"]:"<<R1<<endl;
-	    
-	    Lo=L1;
-	    Ro=R1;
-
-	    round--;
-	    i++;	    	    
-	}
+	    	cout<<"\nkey["<<i+1<<"]:\n"<<fe_key<<endl;
+    	}
+      
+	string xored_message=xored_msg(ep_msg,fe_key);
+    	cout<<"Xored Message(E(R["<<i<<"]+K["<<i+1<<"]):\n"<<xored_message<<endl;
+    
+    	string substituted_msg=substitution_function(xored_message,sbox);
+    	cout<<"Substituted Message(S-Box outputs):\n"<<substituted_msg<<endl;
+    
+    	string permuted_msg=permuted_message(substituted_msg,pf);
+    	cout<<"Permuted message(f(R["<<i<<"],K["<<i+1<<"])):\n"<<permuted_msg<<endl;
+    
+    	string L1=Ro;
+    	cout<<"L["<<i+1<<"]:"<<L1<<endl;
 	
+    	string R1=xored_msg(Lo,permuted_msg);
+    	cout<<"R["<<i+1<<"]:"<<R1<<endl;
+    
+    	Lo=L1;
+    	Ro=R1;
+
+    	round--;
+    	i++;	    	    
+}
+
 	string reversed_msg=Ro+Lo;
 	cout<<"\nReversed message:\n"<<reversed_msg<<endl;
-	
+
 	string des_encrypted_msg=inverse_ip_msg(reversed_msg,inv_ip);
 	cout<<"DES Encrypted Binary Message:\n"<<des_encrypted_msg<<endl;
-	
+
 	string hex_encrypted_msg=hex_conversion(des_encrypted_msg,conv_table,hex);
-		
+	
 	return hex_encrypted_msg;
 	
 }
@@ -649,7 +646,7 @@ int main(){
 				 }
  	 	 	}
 			string enc_msg=des_process(message,key,true);
-	    	cout<<"Finally!!Hex Encrypted Message:"<<enc_msg<<endl;
+	    		cout<<"Finally!!Hex Encrypted Message:"<<enc_msg<<endl;
 
 			char ch;
 			cout<<"Want to see decryption?(y/n):";
@@ -669,7 +666,7 @@ int main(){
 						find++;	
 					}
 					plain_txt=plain_txt+characters[find];
-		        }
+		        	}
 				cout<<"\nDecrypted plain text is:"<<plain_txt<<endl;
 			}
    
