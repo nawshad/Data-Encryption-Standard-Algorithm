@@ -4,11 +4,16 @@
 #include<cctype>
 #include<windows.h>
 
+<<<<<<< HEAD
 
 //Create Another Feature
 //I want this change to be on both the features!
 
 
+=======
+//I want this change to be on both the features!
+
+>>>>>>> 35425eec56a9cd8ea080b5052040645259b61b5e
 using namespace std;
 
 int bin_to_dec(string bin){	
