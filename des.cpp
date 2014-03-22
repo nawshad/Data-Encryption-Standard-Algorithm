@@ -4,6 +4,8 @@
 #include<cctype>
 #include<windows.h>
 
+//I want this change to be on both the features!
+
 using namespace std;
 
 int bin_to_dec(string bin){	
