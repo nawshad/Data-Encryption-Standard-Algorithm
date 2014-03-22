@@ -4,7 +4,7 @@
 #include<cctype>
 #include<windows.h>
 
-//Create Another Feature!
+//Create Test Feature!
 using namespace std;
 
 int bin_to_dec(string bin){	
